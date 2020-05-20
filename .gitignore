@@ -1,0 +1,4 @@
+.idea
+# config file with password
+CVMaker/config.py
+__pycache__

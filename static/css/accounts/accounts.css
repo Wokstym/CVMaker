@@ -1,0 +1,22 @@
+body {
+  background-image: url(../../img/accounts/prism.png);
+}
+
+.logo {
+  font-family: 'Roboto', sans-serif;
+
+}
+
+.logo a {
+  color: white;
+  opacity: 0.8;
+}
+
+.logo a:hover,
+.logo a:active {
+  text-decoration: none;
+}
+
+.container {
+  padding: 100px;
+}
