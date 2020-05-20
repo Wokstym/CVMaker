@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block stylesheet %}
+<link rel="stylesheet" href="{% static 'css/home/add_cv_inf.css' %}">
+{% endblock %}
+
+{% block title %}Add new CV{% endblock %}
+{% block content %}
+    <div class="container my-5 col-12">
+        <div class="row justify-content-center">
+            <div class="col-lg-6 col-md-8 col-sm-10">
+                <div class="card" style="box-shadow: 10px 6px 18px -4px rgba(0,0,0,0.8)">
+                    <div class="card-body">
+                        <h3 class="card-title text-center mb-4" style="color: black">Add short description about you</h3>
+                        <form method="post" novalidate enctype="multipart/form-data" style="color: black">
+                            {% csrf_token %}
+                            {% include 'accounts/form.html' %}
+                            <button type="submit" class="btn btn-primary btn-block mt-4" name="add_cv">Submit</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

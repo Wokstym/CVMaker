@@ -34,6 +34,7 @@ class Address(models.Model):
 class University(models.Model):
     name = models.CharField(max_length=254)
     address = models.EmbeddedField(model_container=Address)
+    objects = models.DjongoManager()
 
 
 class Education(models.Model):
@@ -42,7 +43,7 @@ class Education(models.Model):
     field_of_study = models.CharField(max_length=254)
     degree = models.CharField(max_length=254)
     faculty = models.CharField(max_length=254)
-    university = models.ArrayField(model_container=University)
+    university = models.EmbeddedField(model_container=University)
 
     class Meta:
         abstract = True
@@ -119,7 +120,7 @@ class Organizations(models.Model):
 
 
 class Cv(models.Model):
-    contact_info = models.ArrayField(model_container=ContactInfo)
+    contact_info = models.EmbeddedField(model_container=ContactInfo)
     education = models.ArrayField(model_container=Education)
     experience = models.ArrayField(model_container=Experience)
     skills = models.ArrayField(model_container=Skills)
