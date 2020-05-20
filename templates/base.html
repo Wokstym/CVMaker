@@ -44,7 +44,7 @@
                     {{ user.username }}
                 </a>
                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="userMenu">
-
+                     <a class="dropdown-item" href="{% url 'add_new_cv' %}">Add new CV</a>
                     <div class="dropdown-divider"></div>
                     <a class="dropdown-item" href="{% url 'logout' %}">Log out</a>
                 </div>
