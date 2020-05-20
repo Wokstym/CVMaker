@@ -23,7 +23,8 @@ def add_new_cv(request):
                     interests=[],
                     projects=[],
                     organizations=[],
-                    description=form.cleaned_data['description']
+                    description=form.cleaned_data['description'],
+                    name=form.cleaned_data['name']
                     )
             user_data.current_cvs.append(cv)
             user_data.save()
