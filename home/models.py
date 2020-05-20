@@ -129,6 +129,7 @@ class Cv(models.Model):
     projects = models.ArrayField(model_container=Projects)
     organizations = models.ArrayField(model_container=Organizations)
     description = models.CharField(max_length=254)
+    name = models.CharField(max_length=254)
 
     class Meta:
         abstract = True

@@ -86,3 +86,4 @@ class UniversityForm(forms.Form):
 
 class NewCV(forms.Form):
     description = forms.CharField(max_length=254, required=False)
+    name = forms.CharField(max_length=254, required=True)
