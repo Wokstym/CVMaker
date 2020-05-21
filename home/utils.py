@@ -43,7 +43,7 @@ def generate_pdf(template_path, context, pdf_title):
 
     pdf = pdfkit.from_string(html, False, options, css=css)
     response = HttpResponse(pdf, content_type='application/pdf')
-    content = f"inline; filename={urlquote(pdf_title)}"
+    content = f"inline; filename={urlquote(pdf_title+'.pdf')}"
     response['Content-Disposition'] = content
     return response
 
