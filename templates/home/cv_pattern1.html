@@ -26,7 +26,7 @@
 <div class="container-fluid mt-5 mx-3">
     <div class="row mb-5 mx-auto">
     {% if contact_info is not None %}
-        <div class="col-4 text-center" style="font-size: 16px">
+        <div class="col-5 ml-5" style="font-size: 16px">
                 <h4 class="my-3"style="color: rgba(230,169,11,0.93)">CONTACT</h4>
                 <p class="my-0">{{ contact_info.country }}/{{ contact_info.city }}</p>
                 {% if contact_info.phone != "" %}
@@ -48,18 +48,19 @@
     {% endif %}
 
     {% if experience %}
-        <div class="col-8 text-center">
+{#        <div style="border-left:1px solid black; width: 0"></div>#}
+        <div class="col-5 ml-5">
             <h4 class="my-3"style="color: rgba(230,169,11,0.93)">EMPLOYMENT HISTORY</h4>
             {% for job in experience %}
-                <p style="font-size: 18px"><i class="icon-chevron-right">  </i> {{ job.position }} in {{ job.company }}</p>
-                <p class="my-0">{{ job.start }} - {{ job.end }}</p>
+                <p class="my-0" style="font-size: 18px"><i class="icon-chevron-right">  </i>{{ job.start }} - {{ job.end }}</p>
+                <p class="my-0">{{ job.position }} in {{ job.company }}</p>
                 <p class="mt-0 mb-3">{{ job.description }}</p>
             {% endfor %}
         </div>
     {% endif %}
 
     {% if skills %}
-        <div class="col-4 text-center" style="font-size: 16px">
+        <div class="col-5 ml-5" style="font-size: 16px">
             <h4 class="my-3"style="color: rgba(230,169,11,0.93)">SKILLS</h4>
             {% for skill in skills %}
                 <p class="my-0">{{ skill.name }}</p>
@@ -67,19 +68,21 @@
         </div>
     {% endif %}
 
+
     {% if education %}
-        <div class="col-8 text-center">
+{#        <div style="border-left:1px solid black; width: 0"></div>#}
+        <div class="col-5 ml-5">
             <h4 class="my-3"style="color: rgba(230,169,11,0.93)">ACADEMIC BACKGROUND</h4>
             {% for school in education %}
-                <p style="font-size: 18px"><i class="icon-chevron-right">  </i>{{ school.degree }} in {{ school.field_of_study }}</p>
-                <p class="my-0">{{ school.university.name }}, {{ school.faculty }}, {{ school.university.address.street }} {{ school.university.address.street_number }} {{ school.university.address.city }} {{ school.university.address.zip }}</p>
-                <p class="mt-0 mb-3">{{ school.start }} - {{ school.end }}</p>
+                <p class="my-0" style="font-size: 18px"><i class="icon-chevron-right">  </i>{{ school.start }} - {{ school.end }}</p>
+                <p class="my-0" style="font-size: 18px">{{ school.degree }} in {{ school.field_of_study }}</p>
+                <p class="my-0 mb-3">{{ school.university.name }}, {{ school.faculty }}, {{ school.university.address.street }} {{ school.university.address.street_number }} {{ school.university.address.city }} {{ school.university.address.zip }}</p>
             {% endfor %}
         </div>
     {% endif %}
 
     {% if languages %}
-        <div class="col-4 text-center" style="font-size: 16px">
+        <div class="col-5 ml-5" style="font-size: 16px">
             <h4 class="my-3"style="color: rgba(230,169,11,0.93)">LANGUAGES</h4>
             {% for language in languages %}
                 <p class="my-0">{{ language.name }} - {{ language.description }}</p>
@@ -88,7 +91,8 @@
     {% endif %}
 
     {% if organizations %}
-        <div class="col-8 text-center my-2">
+{#        <div style="border-left:1px solid black; width: 0"></div>#}
+        <div class="col-5 my-2 ml-5">
             <h4 class="my-3"style="color: rgba(230,169,11,0.93)">ORGANIZATIONS</h4>
             {% for organization in organizations %}
                 <p class="mt-0 mb-3">{{ organization.name }} - {{ organization.description }}</p>
@@ -97,7 +101,7 @@
     {% endif %}
 
     {% if interests %}
-        <div class="col-4 text-center" style="font-size: 16px">
+        <div class="col-5 ml-5" style="font-size: 16px">
             <h4 class="my-3"style="color: rgba(230,169,11,0.93)">INTERESTS</h4>
             {% for interest in interests %}
                 <p class="my-0">{{ interest.name }}</p>
@@ -106,7 +110,8 @@
     {% endif %}
 
     {% if projects %}
-        <div class="col-8 text-center my-2">
+{#        <div style="border-left:1px solid black; width: 0"></div>#}
+        <div class="col-5 my-2 ml-5">
             <h4 class="my-3"style="color: rgba(230,169,11,0.93)">PROJECTS</h4>
             {% for project in projects %}
                 <p class="mt-0 mb-3">{{ project.name }} - {{ project.description }}</p>
