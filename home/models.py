@@ -36,6 +36,9 @@ class University(models.Model):
     address = models.EmbeddedField(model_container=Address)
     objects = models.DjongoManager()
 
+    def str(self):
+        return self.name
+
 
 class Education(models.Model):
     start = models.CharField(max_length=254)

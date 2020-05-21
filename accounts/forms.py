@@ -61,9 +61,7 @@ def get_universities():
     un = University.objects.all()
     universities = []
     for i in un:
-        print(i.name)
         universities.append((i.name, i.name))
-    print(universities)
     return universities
 
 

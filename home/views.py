@@ -295,3 +295,36 @@ def add_data(request, cv_number, forms_number):
             return render(request, 'home/add_data.html', {'form': UniversityForm(), 'isValid': False,
                                                           'name': "university", 'forms_number': forms_number,
                                                           'cv_number': cv_number})
+
+
+def is_contact_info(inf):
+    return inf.country != "" or \
+           inf.city != "" or \
+           inf.phone != "" or \
+           inf.email != "" or \
+           inf.github != "" or \
+           inf.linkedin != "" or \
+           inf.personal_website != ""
+
+
+def cv_pattern1(request, cv_number):
+    user_data = UserData.objects.get(user_id=request.user.id)
+    cv = user_data.current_cvs[cv_number]
+    if is_contact_info(cv.contact_info):
+        contact_info = cv.contact_info
+    else:
+        contact_info = None
+    return render(request, 'home/cv_pattern1.html', {'cv_number': cv_number,
+                                                     'name': user_data.name,
+                                                     'surname': user_data.surname,
+                                                     'contact_info': contact_info,
+                                                     'education': cv.education,
+                                                     'experience': cv.experience,
+                                                     'skills': cv.skills,
+                                                     'languages': cv.languages,
+                                                     'interests': cv.interests,
+                                                     'projects': cv.projects,
+                                                     'organizations': cv.organizations,
+                                                     'description': cv.description
+                                                     })
+
