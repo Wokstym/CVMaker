@@ -30,6 +30,11 @@
             <li class="nav-item">
                 <a class="nav-link" href="{% url 'cv_list'%}">Your CVs</a>
             </li>
+                {% if cv_number is not None %}
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'add_cv_inf' cv_number=cv_number %}">Edit CV</a>
+                    </li>
+                {% endif %}
             {% endif %}
 
             {% if request.user.is_superuser %}
