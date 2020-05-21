@@ -7,6 +7,20 @@ Technologies stack:
 - Database: MongoDB Atlas
 - Technology Python, django
 
+## Setup
+
+```bash
+pip install -r requirements.txt
+```
+Download [wkhtmltopdf](https://wkhtmltopdf.org/downloads.html) or follow instruction from [here](https://github.com/worlduniting/bookshop/wiki/Installing-wkhtmltopdf)
+
+Make sure on windows wkhtmltopdf is in PATH, you can check that by typing in terminal 
+```bash
+wkhtmltopdf --version
+```
+
+
+
 ## Roadmap
 
 - [x] podlączenie bazy atlas
