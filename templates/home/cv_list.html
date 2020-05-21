@@ -35,11 +35,10 @@
         </div>
 
         {% endfor %}
-        {% else %}
-        <div class="col-lg-8 col-offset-lg-2 mb-5 text-center">
-            <!--            <a class="btn btn-primary" href=" url 'add_page' ">Add page</a>-->
-        </div>
         {% endif %}
+          <div class="col-lg-8 col-offset-lg-2 mb-5 text-center">
+                        <a class="btn btn-primary" href="{% url 'add_new_cv' %}">Add page</a>
+        </div>
     </div>
 </div>
 

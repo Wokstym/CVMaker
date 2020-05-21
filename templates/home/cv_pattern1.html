@@ -4,16 +4,14 @@
     <meta charset="UTF-8">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
           integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@500&display=swap" rel="stylesheet">
-    <link href="//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css" rel="stylesheet">
+    <link href="https://netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css" rel="stylesheet">
     <link
             rel="stylesheet" type="text/css"
-            href="//cdn.jsdelivr.net/gh/loadingio/ldbutton@v1.0.1/dist/ldbtn.min.css"
+            href="https://cdn.jsdelivr.net/gh/loadingio/ldbutton@v1.0.1/dist/ldbtn.min.css"
     />
-    <link href="//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css" rel="stylesheet">
     <title>CV</title>
 </head>
-<body style="background-color: rgba(84,83,83,0.89); color: white">
+<body style="background-color: rgba(84,83,83,0.89); color: white; padding: 10px">
 
 <div class="container-fluid" style="background-image: url(../../static/img/home/prism.png); font-size: 22px">
     <div class="row">
@@ -102,7 +100,7 @@
 
     {% if interests %}
         <div class="col-5 ml-5" style="font-size: 16px">
-            <h4 class="my-3"style="color: rgba(230,169,11,0.93)">INTERESTS</h4>
+            <h4 class="my-3" style="color: rgba(230,169,11,0.93)">INTERESTS</h4>
             {% for interest in interests %}
                 <p class="my-0">{{ interest.name }}</p>
             {% endfor %}
@@ -112,7 +110,7 @@
     {% if projects %}
 {#        <div style="border-left:1px solid black; width: 0"></div>#}
         <div class="col-5 my-2 ml-5">
-            <h4 class="my-3"style="color: rgba(230,169,11,0.93)">PROJECTS</h4>
+            <h4 class="my-3" style="color: rgba(230,169,11,0.93)">PROJECTS</h4>
             {% for project in projects %}
                 <p class="mt-0 mb-3">{{ project.name }} - {{ project.description }}</p>
             {% endfor %}
