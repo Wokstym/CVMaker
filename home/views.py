@@ -1,10 +1,5 @@
-import pdfkit as pdfkit
-from django.http import HttpResponse
-from django.shortcuts import render, redirect
-from django.template.loader import render_to_string, get_template
-
-from home.models import University, Address, UserData
-from .utils import render_to_pdf, get_context_data, generate_pdf, is_contact_info
+from django.shortcuts import render
+from .utils import get_context_data, generate_pdf
 
 from accounts.forms import InterestsForm, ContactInfoForm, ExperienceForm, SkillsForm, LanguagesForm, ProjectsForm, \
     OrganizationsForm, EducationForm, UniversityForm, NewCV
@@ -25,41 +20,10 @@ def cv_list(request):
 
 
 def view_cv(request, cv_number=0):
-    user_data = UserData.objects.get(user_id=request.user.id)
-    cv = user_data.current_cvs[cv_number]
-    if is_contact_info(cv.contact_info):
-        contact_info = cv.contact_info
-    else:
-        contact_info = None
-
-    context = {'cv_number': cv_number,
-               'name': user_data.name,
-               'surname': user_data.surname,
-               'contact_info': contact_info,
-               'education': cv.education,
-               'experience': cv.experience,
-               'skills': cv.skills,
-               'languages': cv.languages,
-               'interests': cv.interests,
-               'projects': cv.projects,
-               'organizations': cv.organizations,
-               'description': cv.description
-               }
-
+    context = get_context_data(request.user.id, cv_number)
     return render(request, 'home/view_cv.html', context)
 
 
-# def view_cv(PDFTemplateView, cv_number=0):
-#     template_name = "hello.html"
-# print(request.user.id)
-# user_data = UserData.objects.get(user_id=request.user.id)
-# cv = user_data.current_cvs[cv_number]
-#
-#
-# context = {
-#     "name": cv.name
-# }
-# return render(request, 'home/view_cv.html', context)
 def add_new_cv(request):
     if request.method == 'POST':
         form = NewCV(request.POST)
