@@ -17,5 +17,6 @@ urlpatterns = [
     path('add_new_cv', home_view.add_new_cv, name='add_new_cv'),
     path('add_cv_inf/<int:cv_number>', home_view.add_cv_inf, name='add_cv_inf'),
     path('add_data/<int:cv_number>/<int:forms_number>', home_view.add_data, name='add_data'),
-    path('cv/<int:cv_number>', home_view.cv_pattern1, name='cv_pattern1'),
+    path('cv1/<int:cv_number>', home_view.cv_pattern1, name='cv_pattern1'),
+    path('cv2/<int:cv_number>', home_view.cv_pattern2, name='cv_pattern2'),
 ]

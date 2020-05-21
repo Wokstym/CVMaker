@@ -1,8 +1,10 @@
+import pdfkit as pdfkit
 from django.http import HttpResponse
 from django.shortcuts import render, redirect
-from django.template.loader import render_to_string
+from django.template.loader import render_to_string, get_template
 
 from home.models import University, Address, UserData
+from .utils import render_to_pdf, get_context_data, generate_pdf, is_contact_info
 
 from accounts.forms import InterestsForm, ContactInfoForm, ExperienceForm, SkillsForm, LanguagesForm, ProjectsForm, \
     OrganizationsForm, EducationForm, UniversityForm, NewCV
@@ -17,7 +19,7 @@ def start_page(request):
 def cv_list(request):
     user_data = UserData.objects.get(user_id=request.user.id)
     context = {
-        'cvs':user_data.current_cvs
+        'cvs': user_data.current_cvs
     }
     return render(request, 'home/cv_list.html', context)
 
@@ -25,13 +27,27 @@ def cv_list(request):
 def view_cv(request, cv_number=0):
     user_data = UserData.objects.get(user_id=request.user.id)
     cv = user_data.current_cvs[cv_number]
+    if is_contact_info(cv.contact_info):
+        contact_info = cv.contact_info
+    else:
+        contact_info = None
 
-    context = {
-        "name": cv.name,
-        "description":cv.description,
-        "cv_number": cv_number
-    }
+    context = {'cv_number': cv_number,
+               'name': user_data.name,
+               'surname': user_data.surname,
+               'contact_info': contact_info,
+               'education': cv.education,
+               'experience': cv.experience,
+               'skills': cv.skills,
+               'languages': cv.languages,
+               'interests': cv.interests,
+               'projects': cv.projects,
+               'organizations': cv.organizations,
+               'description': cv.description
+               }
+
     return render(request, 'home/view_cv.html', context)
+
 
 # def view_cv(PDFTemplateView, cv_number=0):
 #     template_name = "hello.html"
@@ -297,34 +313,15 @@ def add_data(request, cv_number, forms_number):
                                                           'cv_number': cv_number})
 
 
-def is_contact_info(inf):
-    return inf.country != "" or \
-           inf.city != "" or \
-           inf.phone != "" or \
-           inf.email != "" or \
-           inf.github != "" or \
-           inf.linkedin != "" or \
-           inf.personal_website != ""
+from django.utils.http import urlquote
 
 
 def cv_pattern1(request, cv_number):
-    user_data = UserData.objects.get(user_id=request.user.id)
-    cv = user_data.current_cvs[cv_number]
-    if is_contact_info(cv.contact_info):
-        contact_info = cv.contact_info
-    else:
-        contact_info = None
-    return render(request, 'home/cv_pattern1.html', {'cv_number': cv_number,
-                                                     'name': user_data.name,
-                                                     'surname': user_data.surname,
-                                                     'contact_info': contact_info,
-                                                     'education': cv.education,
-                                                     'experience': cv.experience,
-                                                     'skills': cv.skills,
-                                                     'languages': cv.languages,
-                                                     'interests': cv.interests,
-                                                     'projects': cv.projects,
-                                                     'organizations': cv.organizations,
-                                                     'description': cv.description
-                                                     })
+    context = get_context_data(request.user.id, cv_number)
+    filename = f"{context['name']}-{context['surname']}-cv"
+    return generate_pdf('home/cv_pattern1.html', context, filename)
 
+
+def cv_pattern2(request, cv_number):
+    context = get_context_data(request.user.id, cv_number)
+    return generate_pdf('home/cv_pattern2.html', context, f"{context['name']}-{context['surname']}-cv")
