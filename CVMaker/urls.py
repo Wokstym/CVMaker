@@ -17,3 +17,4 @@ urlpatterns = [
     path('add_new_cv', home_view.add_new_cv, name='add_new_cv'),
     path('add_cv_inf/<int:cv_number>', home_view.add_cv_inf, name='add_cv_inf'),
     path('add_data/<int:cv_number>/<int:forms_number>', home_view.add_data, name='add_data')
+]
