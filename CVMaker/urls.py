@@ -1,6 +1,5 @@
 from django.contrib import admin
-from django.urls import path, include
-from django.views.generic import RedirectView
+from django.urls import path
 
 from accounts import views as accounts_view
 from home import views as home_view

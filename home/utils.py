@@ -1,14 +1,10 @@
 import json
-import re
 from datetime import datetime
 from django.utils.http import urlquote
-
-from io import BytesIO
 
 import pdfkit
 from django.http import HttpResponse
 from django.template.loader import get_template
-from xhtml2pdf import pisa
 
 from home.models import UserData
 
@@ -43,7 +39,7 @@ def generate_pdf(template_path, context, pdf_title):
 
     pdf = pdfkit.from_string(html, False, options, css=css)
     response = HttpResponse(pdf, content_type='application/pdf')
-    content = f"inline; filename={urlquote(pdf_title+'.pdf')}"
+    content = f"inline; filename={urlquote(pdf_title + '.pdf')}"
     response['Content-Disposition'] = content
     return response
 
@@ -69,16 +65,6 @@ def get_context_data(user_id, cv_number):
             'organizations': cv.organizations,
             'description': cv.description
             }
-
-
-def render_to_pdf(template_src, context_dict={}):
-    template = get_template(template_src)
-    html = template.render(context_dict)
-    result = BytesIO()
-    pdf = pisa.pisaDocument(BytesIO(html.encode("UTF-16")), result)
-    if not pdf.err:
-        return HttpResponse(result.getvalue(), content_type='application/pdf')
-    return None
 
 
 def pretty_print_json(json_string):
