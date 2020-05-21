@@ -13,7 +13,7 @@ Technologies stack:
 - [x] logowanie/rejestracja
 - [ ] lista dodanych danych do cv
 - [x] dodawanie danych do cv
-- [ ] wygeneruj i pobierz
+- [x] wygeneruj i pobierz
 
 ## Contributors ✨
 
