@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+          integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@500&display=swap" rel="stylesheet">
+    <link href="//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css" rel="stylesheet">
+    <link
+            rel="stylesheet" type="text/css"
+            href="//cdn.jsdelivr.net/gh/loadingio/ldbutton@v1.0.1/dist/ldbtn.min.css"
+    />
+    <link href="//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css" rel="stylesheet">
+    <title>CV</title>
+</head>
+<body style="background-color: rgba(84,83,83,0.89); color: white">
+
+<div class="container-fluid" style="background-image: url(../../static/img/home/prism.png); font-size: 22px">
+    <div class="row">
+        <div class="col-12 text-center mt-5" style="font-size: 40px">{{ name }} {{ surname }}</div>
+        <div class="col-12 text-center mb-4">{{ description }}</div>
+
+    </div>
+</div>
+
+<div class="container-fluid mt-5 mx-3">
+    <div class="row mb-5 mx-auto">
+    {% if contact_info is not None %}
+        <div class="col-4 text-center" style="font-size: 16px">
+                <h4 class="my-3"style="color: rgba(230,169,11,0.93)">CONTACT</h4>
+                <p class="my-0">{{ contact_info.country }}/{{ contact_info.city }}</p>
+                {% if contact_info.phone != "" %}
+                    <p class="my-0"><i class="icon-phone">  </i>{{ contact_info.phone }}</p>
+                {% endif %}
+                {% if contact_info.email != "" %}
+                    <p class="my-0"><i class="icon-envelope-alt">  </i>{{ contact_info.email }}</p>
+                {% endif %}
+                {% if  contact_info.github != "" %}
+                    <p class="my-0"><i class="icon-github">  </i>{{ contact_info.github }}</p>
+                {% endif %}
+                {% if contact_info.linkedin != "" %}
+                    <p class="my-0"><i class="icon-linkedin">  </i>{{ contact_info.linkedin }}</p>
+                {% endif %}
+                {% if contact_info.personal_website != "" %}
+                    <p class="my-0"><i class="icon-cloud">  </i>{{ contact_info.personal_website }}</p>
+                {% endif %}
+        </div>
+    {% endif %}
+
+    {% if experience %}
+        <div class="col-8 text-center">
+            <h4 class="my-3"style="color: rgba(230,169,11,0.93)">EMPLOYMENT HISTORY</h4>
+            {% for job in experience %}
+                <p style="font-size: 18px"><i class="icon-chevron-right">  </i> {{ job.position }} in {{ job.company }}</p>
+                <p class="my-0">{{ job.start }} - {{ job.end }}</p>
+                <p class="mt-0 mb-3">{{ job.description }}</p>
+            {% endfor %}
+        </div>
+    {% endif %}
+
+    {% if skills %}
+        <div class="col-4 text-center" style="font-size: 16px">
+            <h4 class="my-3"style="color: rgba(230,169,11,0.93)">SKILLS</h4>
+            {% for skill in skills %}
+                <p class="my-0">{{ skill.name }}</p>
+            {% endfor %}
+        </div>
+    {% endif %}
+
+    {% if education %}
+        <div class="col-8 text-center">
+            <h4 class="my-3"style="color: rgba(230,169,11,0.93)">ACADEMIC BACKGROUND</h4>
+            {% for school in education %}
+                <p style="font-size: 18px"><i class="icon-chevron-right">  </i>{{ school.degree }} in {{ school.field_of_study }}</p>
+                <p class="my-0">{{ school.university.name }}, {{ school.faculty }}, {{ school.university.address.street }} {{ school.university.address.street_number }} {{ school.university.address.city }} {{ school.university.address.zip }}</p>
+                <p class="mt-0 mb-3">{{ school.start }} - {{ school.end }}</p>
+            {% endfor %}
+        </div>
+    {% endif %}
+
+    {% if languages %}
+        <div class="col-4 text-center" style="font-size: 16px">
+            <h4 class="my-3"style="color: rgba(230,169,11,0.93)">LANGUAGES</h4>
+            {% for language in languages %}
+                <p class="my-0">{{ language.name }} - {{ language.description }}</p>
+            {% endfor %}
+        </div>
+    {% endif %}
+
+    {% if organizations %}
+        <div class="col-8 text-center my-2">
+            <h4 class="my-3"style="color: rgba(230,169,11,0.93)">ORGANIZATIONS</h4>
+            {% for organization in organizations %}
+                <p class="mt-0 mb-3">{{ organization.name }} - {{ organization.description }}</p>
+            {% endfor %}
+        </div>
+    {% endif %}
+
+    {% if interests %}
+        <div class="col-4 text-center" style="font-size: 16px">
+            <h4 class="my-3"style="color: rgba(230,169,11,0.93)">INTERESTS</h4>
+            {% for interest in interests %}
+                <p class="my-0">{{ interest.name }}</p>
+            {% endfor %}
+        </div>
+    {% endif %}
+
+    {% if projects %}
+        <div class="col-8 text-center my-2">
+            <h4 class="my-3"style="color: rgba(230,169,11,0.93)">PROJECTS</h4>
+            {% for project in projects %}
+                <p class="mt-0 mb-3">{{ project.name }} - {{ project.description }}</p>
+            {% endfor %}
+        </div>
+    {% endif %}
+    </div>
+
+</div>
+
+<div class="container-fluid" style="background-image: url(../../static/img/home/prism.png); font-size: 14px">
+    <div class="row text-center">
+        <div class="col-lg-8 col-lg-offset-2 text-center mx-auto my-4">Wyrażam zgodę na przetwarzanie moich danych osobowych dla potrzeb niezbędnych do realizacji procesu rekrutacji zgodnie z Rozporządzeniem Parlamentu Europejskiego i Rady (UE) 2016/679 z dnia 27 kwietnia 2016 r. w sprawie ochrony osób fizycznych w związku z przetwarzaniem danych osobowych i w sprawie swobodnego przepływu takich danych oraz uchylenia dyrektywy 95/46/WE (RODO).</div>
+    </div>
+</div>
+
+
+
+
+
+<script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
+        integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
+        crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+        integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+        crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
+        integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
+        crossorigin="anonymous"></script>
+
+</body>
+</html>
