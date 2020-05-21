@@ -313,9 +313,6 @@ def add_data(request, cv_number, forms_number):
                                                           'cv_number': cv_number})
 
 
-from django.utils.http import urlquote
-
-
 def cv_pattern1(request, cv_number):
     context = get_context_data(request.user.id, cv_number)
     filename = f"{context['name']}-{context['surname']}-cv"

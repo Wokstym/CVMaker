@@ -1,6 +1,7 @@
 import json
 import re
 from datetime import datetime
+from django.utils.http import urlquote
 
 from io import BytesIO
 
@@ -41,7 +42,10 @@ def generate_pdf(template_path, context, pdf_title):
         'static/css/to_pdf/fontawesome.min.css']
 
     pdf = pdfkit.from_string(html, False, options, css=css)
-    return HttpResponse(pdf, content_type='application/pdf')
+    response = HttpResponse(pdf, content_type='application/pdf')
+    content = f"inline; filename={urlquote(pdf_title)}"
+    response['Content-Disposition'] = content
+    return response
 
 
 def get_context_data(user_id, cv_number):
