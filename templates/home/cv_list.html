@@ -1,0 +1,46 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block stylesheet %}
+<link rel="stylesheet" href="{% static 'css/home/cv_list.css' %}">
+{% endblock %}
+
+{% block content %}
+<div class="container mt-5 col-12">
+    <div class="row justify-content-center">
+        {% if cvs %}
+        <div class="col-lg-8 col-offset-lg-2 mb-5 text-center">
+            <h1>Choose your CV</h1>
+        </div>
+        {% for cv in cvs %}
+        <div class="col-lg-6 py-5">
+            <div class="card border-dark mb-3" style="border-radius: 10px">
+
+                <div class="row card-body">
+
+                    <div class="col-12  my-4 text-center">
+                        <h5>{{cv.name}}</h5>
+                    </div>
+                </div>
+
+                <div class="card-footer text-muted text-center">
+                    <a class="btn btn-primary " href="{% url 'view_cv' cv_number=forloop.counter0 %}"
+                       style="box-shadow: 10px 6px 18px -4px rgba(0,0,0,0.5) color: white">
+                        <!--   musialem wyjebać {   x % %   xx} bo nadal wykrywalo nawet po zakomentowaniu-->
+
+                        <i class="icon-check"> </i>Choose</a>
+                </div>
+            </div>
+        </div>
+
+        {% endfor %}
+        {% else %}
+        <div class="col-lg-8 col-offset-lg-2 mb-5 text-center">
+            <!--            <a class="btn btn-primary" href=" url 'add_page' ">Add page</a>-->
+        </div>
+        {% endif %}
+    </div>
+</div>
+
+{% endblock %}
