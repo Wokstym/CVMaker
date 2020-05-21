@@ -28,7 +28,8 @@ def view_cv(request, cv_number=0):
 
     context = {
         "name": cv.name,
-        "description":cv.description
+        "description":cv.description,
+        "cv_number": cv_number
     }
     return render(request, 'home/view_cv.html', context)
 
