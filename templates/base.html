@@ -27,7 +27,9 @@
     <div class="collapse navbar-collapse ml-4" id="menu">
         <ul class="navbar-nav mr-auto ">
             {% if user.is_authenticated %}
-
+            <li class="nav-item">
+                <a class="nav-link" href="{% url 'cv_list'%}">Your CVs</a>
+            </li>
             {% endif %}
 
             {% if request.user.is_superuser %}

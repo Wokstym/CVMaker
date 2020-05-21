@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block stylesheet %}
+<link rel="stylesheet" href="{% static 'css/home/view_cv.css' %}">
+{% endblock %}
+
+
+{% block content %}
+
+<div class="col-lg-8 offset-lg-2 my-4">
+
+    <div class="card" style="box-shadow: 10px 6px 18px -4px rgba(0,0,0,0.8)">
+        <div class="row  mt-3 card-body">
+            <h5 class="col-12  my-4 text-center">{{name}}</h5>
+
+
+        </div>
+
+        <div class="card-body mt-0 pt-0">
+            <h6 class="col-12  my-4 text-center">{{description}}</h6>
+
+        </div>
+    </div>
+</div>
+
+{% endblock %}
