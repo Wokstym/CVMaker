@@ -57,15 +57,27 @@ def add_cv_inf(request, cv_number):
         form = ContactInfoForm(request.POST)
         if form.is_valid():
             user_data = UserData.objects.get(user_id=request.user.id)
-            user_data.current_cvs[cv_number].contact_info = ContactInfo(
-                city=form.cleaned_data['city'],
-                country=form.cleaned_data['country'],
-                phone=form.cleaned_data['phone'],
-                github=form.cleaned_data['github'],
-                linkedin=form.cleaned_data['linkedin'],
-                personal_website=form.cleaned_data['personal_website'],
-                email=form.cleaned_data['email']
-            )
+            contact_info = user_data.current_cvs[cv_number].contact_info
+
+            if contact_info is None:
+                contact_info = ContactInfo()
+            if form.cleaned_data['city'] != '':
+                contact_info.city = form.cleaned_data['city']
+            if form.cleaned_data['country'] != '':
+                contact_info.country = form.cleaned_data['country']
+            if form.cleaned_data['phone'] != '':
+                contact_info.phone = form.cleaned_data['phone']
+            if form.cleaned_data['github'] != '':
+                contact_info.github = form.cleaned_data['github']
+            if form.cleaned_data['linkedin'] != '':
+                contact_info.linkedin = form.cleaned_data['linkedin']
+            if form.cleaned_data['personal_website'] != '':
+                contact_info.personal_website = form.cleaned_data['personal_website']
+            if form.cleaned_data['email'] != '':
+                contact_info.email = form.cleaned_data['email']
+            if form.cleaned_data['quotation'] != '':
+                user_data.current_cvs[cv_number].quotation = form.cleaned_data['quotation']
+            user_data.current_cvs[cv_number].contact_info = contact_info
             user_data.save()
             return render(request, 'home/add_cv_inf.html',
                           {'cv_number': cv_number, 'form': ContactInfoForm(), 'isValid': True})

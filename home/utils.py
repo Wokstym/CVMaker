@@ -29,7 +29,8 @@ def generate_pdf(template_path, context, pdf_title):
         'margin-left': "0",
         'margin-right': "0",
         'margin-bottom': "0",
-        'title': pdf_title
+        'title': pdf_title,
+        'viewport-size': '1024x768'
     }
 
     css = [
@@ -63,7 +64,8 @@ def get_context_data(user_id, cv_number):
             'interests': cv.interests,
             'projects': cv.projects,
             'organizations': cv.organizations,
-            'description': cv.description
+            'description': cv.description,
+            'quotation': cv.quotation
             }
 
 

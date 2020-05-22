@@ -25,7 +25,7 @@ wkhtmltopdf --version
 
 - [x] podlączenie bazy atlas
 - [x] logowanie/rejestracja
-- [ ] lista dodanych danych do cv
+- [x] lista dodanych danych do cv
 - [x] dodawanie danych do cv
 - [x] wygeneruj i pobierz
 
