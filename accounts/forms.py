@@ -16,13 +16,14 @@ class SignUpForm(UserCreationForm):
 
 
 class ContactInfoForm(forms.Form):
-    city = forms.CharField(max_length=254, required=True)
-    country = forms.CharField(max_length=254, required=True)
+    quotation = forms.CharField(max_length=254, required=False)
+    city = forms.CharField(max_length=254, required=False)
+    country = forms.CharField(max_length=254, required=False)
     phone = forms.CharField(max_length=254, required=False)
     github = forms.CharField(max_length=254, required=False)
     linkedin = forms.CharField(max_length=254, required=False)
     personal_website = forms.CharField(max_length=254, required=False)
-    email = forms.CharField(max_length=254, required=True)
+    email = forms.CharField(max_length=254, required=False)
 
 
 class ExperienceForm(forms.Form):

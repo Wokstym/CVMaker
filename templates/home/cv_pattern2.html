@@ -1,1 +1,186 @@
-nic xD
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=1024px">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+          integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link href="https://netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css" rel="stylesheet">
+    <link
+            rel="stylesheet" type="text/css"
+            href="https://cdn.jsdelivr.net/gh/loadingio/ldbutton@v1.0.1/dist/ldbtn.min.css"
+    />
+    <title>CV</title>
+</head>
+<body style="height: 1402px">
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-3 ml-5">
+
+            {% if contact_info is not None %}
+
+            <div class=" pt-5" style="font-size: 16px">
+                <div style="color: rgba(37,44,58, 0.9)">
+                    <h4 class="mt-3" style="font-weight: bold;">CONTACT</h4>
+                    <hr style="height:1px; background-color: rgba(37,44,58, 0.9)">
+                </div>
+                <p class="my-0"><i class="icon-map-marker "><br></i>{{contact_info.country}}/{{contact_info.city}}</p>
+                {% if contact_info.phone != "" %}
+                <p class="my-0"><i class="icon-phone"><br></i>{{contact_info.phone}}</p>
+                {% endif %}
+                {% if contact_info.email != "" %}
+                <p class="my-0"><i class="icon-envelope-alt"><br></i>{{contact_info.email}}</p>
+                {% endif %}
+                {% if contact_info.github != "" %}
+                <p class="my-0"><i class="icon-github"><br></i>{{contact_info.github}}</p>
+                {% endif %}
+                {% if contact_info.linkedin != "" %}
+                <p class="my-0"><i class="icon-linkedin"><br></i>{{contact_info.linkedin}}</p>
+                {% endif %}
+                {% if contact_info.personal_website != "" %}
+                <p class="my-0"><i class="icon-cloud"><br></i>{{contact_info.personal_website}}</p>
+                {% endif %}
+            </div>
+            {% endif %}
+
+            {% if skills %}
+            <div  style="font-size: 16px">
+                <div style="color: rgba(37,44,58, 0.9)">
+                    <h4 class="mt-3" style="font-weight: bold;">SKILLS</h4>
+                    <hr style="height:1px; background-color: rgba(37,44,58, 0.9)">
+                </div>
+                {% for skill in skills %}
+                <div style="color:white;background-color: rgba(37,44,58, 0.9); display: inline-block; border-radius: 6px;"
+                     class="mr-2 my-2 p-1 px-3">{{skill.name}}</div>
+                {% endfor %}
+            </div>
+            {% endif %}
+
+            {% if languages %}
+            <div  style="font-size: 16px">
+                <div style="color: rgba(37,44,58, 0.9)">
+                    <h4 class="mt-3" style="font-weight: bold;">LANGUAGES</h4>
+                    <hr style="height:1px; background-color: rgba(37,44,58, 0.9)">
+                </div>
+                {% for language in languages %}
+                <p class="my-0" style="font-size: 22px; font-weight: bold;">{{language.name}}</p>
+                <p class="my-0 mb-3" style="font-size: 16px; font-style: italic;">
+                    {{language.description}}</p>
+                {% endfor %}
+            </div>
+            {% endif %}
+
+            {% if interests %}
+            <div  style="font-size: 16px">
+                <div style="color: rgba(37,44,58, 0.9)">
+                    <h4 class="mt-3" style="font-weight: bold;">INTERESTS</h4>
+                    <hr style="height:1px; background-color: rgba(37,44,58, 0.9)">
+                </div>
+                {% for interest in interests %}
+               <div style=" display: inline-block; border-radius: 6px;border-style: solid; border-color: grey;" class="m-2 ml-0 p-1 px-3">{{interest.name}}</div>
+                {% endfor %}
+            </div>
+            {% endif %}
+
+
+        </div>
+        <div class="col-9 mx-3 pt-1">
+
+            <div class="pl-3 pr-5 pb-3"
+                 style=" font-size: 22px; background-color: rgba(37,44,58, 0.9); color: white;">
+                <div class="text-left mt-5 pt-1" style="font-size: 40px; ">
+                    {{name}} {{surname}}
+                </div>
+                <div class="text-left mb-0">{{description}}</div>
+                <hr style="height:2px; background-color:white; margin-right:400px">
+                <div style="font-size: 16px;">{{quotation}}</div>
+
+            </div>
+
+            {% if experience %}
+
+            <div>
+                <div style="color: rgba(37,44,58, 0.9)">
+                    <h4 class="mt-3 pl-3" style="font-weight: bold;">EMPLOYMENT HISTORY</h4>
+                    <hr style="height:1px; margin-right:400px; background-color: rgba(37,44,58, 0.9)">
+                </div>
+                {% for job in experience %}
+
+                <p class="my-0 pl-3" style="font-size: 22px; font-weight: bold;">{{job.position}} in
+                    {{job.company}}</p>
+                <p class="my-0 pl-3" style="font-size: 18px; ">{{job.description}}</p>
+                <p class="my-0 mb-3 pl-3" style="font-size: 16px; font-style: italic;">{{job.start}} -
+                    {{job.end}}</p>
+                {% endfor %}
+            </div>
+            {% endif %}
+
+            {% if education %}
+
+            <div>
+                <div style="color: rgba(37,44,58, 0.9)">
+                    <h4 class="mt-3 pl-3" style="font-weight: bold;">ACADEMIC BACKGROUND</h4>
+                    <hr style="height:1px; margin-right:400px; background-color: rgba(37,44,58, 0.9)">
+                </div>
+                {% for school in education %}
+
+                <p class="my-0 pl-3" style="font-size: 22px; font-weight: bold;">{{school.degree}} in
+                    {{school.field_of_study}}</p>
+                <p class="my-0 pl-3" style="font-size: 18px; ">{{school.university.name}}, {{school.faculty}},
+                    {{school.university.address.street}} {{school.university.address.street_number}}
+                    {{school.university.address.city}} {{school.university.address.zip}}</p>
+                <p class="my-0 mb-3 pl-3" style="font-size: 16px; font-style: italic;">{{school.start}} -
+                    {{school.end}}</p>
+                {% endfor %}
+            </div>
+            {% endif %}
+
+            {% if organizations %}
+
+            <div>
+                <div style="color: rgba(37,44,58, 0.9)">
+                    <h4 class="mt-3 pl-3" style="font-weight: bold;">ORGANIZATIONS</h4>
+                    <hr style="height:1px; margin-right:400px; background-color: rgba(37,44,58, 0.9)">
+                </div>
+                {% for organization in organizations %}
+                <p class="my-0 pl-3" style="font-size: 22px; font-weight: bold;">{{organization.name}}</p>
+                <p class="my-0 mb-3 pl-3" style="font-size: 16px; font-style: italic;">
+                    {{organization.description}}</p>
+                {% endfor %}
+            </div>
+            {% endif %}
+
+            {% if projects %}
+
+            <div>
+                <div style="color: rgba(37,44,58, 0.9)">
+                    <h4 class="mt-3 pl-3" style="font-weight: bold;">PROJECTS</h4>
+                    <hr style="height:1px; margin-right:400px; background-color: rgba(37,44,58, 0.9)">
+                </div>
+                {% for project in projects %}
+                <p class="my-0 pl-3" style="font-size: 22px; font-weight: bold;">{{project.name}}</p>
+                <p class="my-0 mb-3 pl-3" style="font-size: 16px;">{{project.description}}</p>
+                {% endfor %}
+            </div>
+            {% endif %}
+
+
+        </div>
+    </div>
+
+
+</div>
+
+
+<script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
+        integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
+        crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+        integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+        crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
+        integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
+        crossorigin="anonymous"></script>
+
+</body>
+</html>

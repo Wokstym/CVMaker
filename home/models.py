@@ -133,6 +133,7 @@ class Cv(models.Model):
     organizations = models.ArrayField(model_container=Organizations)
     description = models.CharField(max_length=254)
     name = models.CharField(max_length=254)
+    quotation = models.CharField(max_length=254)
 
     class Meta:
         abstract = True
