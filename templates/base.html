@@ -20,10 +20,20 @@
     />
     {% block stylesheet %}{% endblock %}
     <title>{% block title %}Home page{% endblock %}</title>
+    <style>
+        nav{
+            font-size: 1.2rem;
+            font-weight: 500;
+        }
+        .navbar-brand {
+            font-weight: 500;
+            font-size: 1.6rem;
+          }
+    </style>
 </head>
 <body>
 {% block body %}  <!-- HERE -->
-<nav class="navbar navbar-expand-md bg-dark navbar-dark justify-content-between">
+<nav class="navbar navbar-expand-md bg-transparent navbar-light justify-content-between" style="color: black">
     <a class="navbar-brand ml-5" href="{% url 'start' %}">CVMaker</a>
 
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#menu" aria-controls="menu"

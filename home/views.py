@@ -42,13 +42,13 @@ def add_new_cv(request):
                     )
             user_data.current_cvs.append(cv)
             user_data.save()
-            return render(request, 'home/add_cv_inf.html',
+            return render(request, 'home/forms/add_cv_inf.html',
                           {'cv_number': len(user_data.current_cvs) - 1, 'form': ContactInfoForm(), 'isValid': True})
         else:
-            return render(request, 'home/add_new_cv.html',
+            return render(request, 'home/forms/add_new_cv.html',
                           {'form': NewCV(), 'isValid': False})
     else:
-        return render(request, 'home/add_new_cv.html',
+        return render(request, 'home/forms/add_new_cv.html',
                       {'form': NewCV(), 'isValid': False})
 
 
@@ -79,13 +79,13 @@ def add_cv_inf(request, cv_number):
                 user_data.current_cvs[cv_number].quotation = form.cleaned_data['quotation']
             user_data.current_cvs[cv_number].contact_info = contact_info
             user_data.save()
-            return render(request, 'home/add_cv_inf.html',
+            return render(request, 'home/forms/add_cv_inf.html',
                           {'cv_number': cv_number, 'form': ContactInfoForm(), 'isValid': True})
         else:
-            return render(request, 'home/add_cv_inf.html',
+            return render(request, 'home/forms/add_cv_inf.html',
                           {'cv_number': cv_number, 'form': ContactInfoForm(), 'isValid': False})
     else:
-        return render(request, 'home/add_cv_inf.html',
+        return render(request, 'home/forms/add_cv_inf.html',
                       {'cv_number': cv_number, 'form': ContactInfoForm(), 'isValid': False})
 
 
@@ -104,15 +104,15 @@ def add_data(request, cv_number, forms_number):
                     description=form.cleaned_data['description']
                 ))
                 user_data.save()
-                return render(request, 'home/add_data.html',
+                return render(request, 'home/forms/add_data.html',
                               {'form': ExperienceForm(), 'isValid': True, 'name': "experience",
                                'forms_number': forms_number, 'cv_number': cv_number})
             else:
-                return render(request, 'home/add_data.html',
+                return render(request, 'home/forms/add_data.html',
                               {'form': ExperienceForm(), 'isValid': False, 'name': "experience",
                                'forms_number': forms_number, 'cv_number': cv_number})
         else:
-            return render(request, 'home/add_data.html',
+            return render(request, 'home/forms/add_data.html',
                           {'form': ExperienceForm(), 'isValid': False, 'name': "experience",
                            'forms_number': forms_number, 'cv_number': cv_number})
 
@@ -126,15 +126,15 @@ def add_data(request, cv_number, forms_number):
                     name=form.cleaned_data['name']
                 ))
                 user_data.save()
-                return render(request, 'home/add_data.html',
+                return render(request, 'home/forms/add_data.html',
                               {'form': SkillsForm(), 'isValid': True, 'name': "skills", 'forms_number': forms_number,
                                'cv_number': cv_number})
             else:
-                return render(request, 'home/add_data.html',
+                return render(request, 'home/forms/add_data.html',
                               {'form': SkillsForm(), 'isValid': False, 'name': "skills", 'forms_number': forms_number,
                                'cv_number': cv_number})
         else:
-            return render(request, 'home/add_data.html',
+            return render(request, 'home/forms/add_data.html',
                           {'form': SkillsForm(), 'isValid': False, 'name': "skills", 'forms_number': forms_number,
                            'cv_number': cv_number})
 
@@ -149,15 +149,15 @@ def add_data(request, cv_number, forms_number):
                     description=form.cleaned_data['description']
                 ))
                 user_data.save()
-                return render(request, 'home/add_data.html',
+                return render(request, 'home/forms/add_data.html',
                               {'form': LanguagesForm(), 'isValid': True, 'name': "languages",
                                'forms_number': forms_number, 'cv_number': cv_number})
             else:
-                return render(request, 'home/add_data.html',
+                return render(request, 'home/forms/add_data.html',
                               {'form': LanguagesForm(), 'isValid': False, 'name': "languages",
                                'forms_number': forms_number, 'cv_number': cv_number})
         else:
-            return render(request, 'home/add_data.html',
+            return render(request, 'home/forms/add_data.html',
                           {'form': LanguagesForm(), 'isValid': False, 'name': "languages",
                            'forms_number': forms_number, 'cv_number': cv_number})
 
@@ -171,15 +171,15 @@ def add_data(request, cv_number, forms_number):
                     name=form.cleaned_data['name']
                 ))
                 user_data.save()
-                return render(request, 'home/add_data.html',
+                return render(request, 'home/forms/add_data.html',
                               {'form': InterestsForm(), 'isValid': True, 'name': "interests",
                                'forms_number': forms_number, 'cv_number': cv_number})
             else:
-                return render(request, 'home/add_data.html',
+                return render(request, 'home/forms/add_data.html',
                               {'form': InterestsForm(), 'isValid': False, 'name': "interests",
                                'forms_number': forms_number, 'cv_number': cv_number})
         else:
-            return render(request, 'home/add_data.html',
+            return render(request, 'home/forms/add_data.html',
                           {'form': InterestsForm(), 'isValid': False, 'name': "interests",
                            'forms_number': forms_number, 'cv_number': cv_number})
 
@@ -194,15 +194,15 @@ def add_data(request, cv_number, forms_number):
                     description=form.cleaned_data['description']
                 ))
                 user_data.save()
-                return render(request, 'home/add_data.html',
+                return render(request, 'home/forms/add_data.html',
                               {'form': ProjectsForm(), 'isValid': True, 'name': "projects",
                                'forms_number': forms_number, 'cv_number': cv_number})
             else:
-                return render(request, 'home/add_data.html',
+                return render(request, 'home/forms/add_data.html',
                               {'form': ProjectsForm(), 'isValid': False, 'name': "projects",
                                'forms_number': forms_number, 'cv_number': cv_number})
         else:
-            return render(request, 'home/add_data.html', {'form': ProjectsForm(), 'isValid': False, 'name': "projects",
+            return render(request, 'home/forms/add_data.html', {'form': ProjectsForm(), 'isValid': False, 'name': "projects",
                                                           'forms_number': forms_number, 'cv_number': cv_number})
 
     # Organizations
@@ -216,15 +216,15 @@ def add_data(request, cv_number, forms_number):
                     description=form.cleaned_data['description']
                 ))
                 user_data.save()
-                return render(request, 'home/add_data.html', {'form': OrganizationsForm(), 'isValid': True,
+                return render(request, 'home/forms/add_data.html', {'form': OrganizationsForm(), 'isValid': True,
                                                               'name': "organizations", 'forms_number': forms_number,
                                                               'cv_number': cv_number})
             else:
-                return render(request, 'home/add_data.html', {'form': OrganizationsForm(), 'isValid': False,
+                return render(request, 'home/forms/add_data.html', {'form': OrganizationsForm(), 'isValid': False,
                                                               'name': "organizations", 'forms_number': forms_number,
                                                               'cv_number': cv_number})
         else:
-            return render(request, 'home/add_data.html', {'form': OrganizationsForm(), 'isValid': False,
+            return render(request, 'home/forms/add_data.html', {'form': OrganizationsForm(), 'isValid': False,
                                                           'name': "organizations", 'forms_number': forms_number,
                                                           'cv_number': cv_number})
 
@@ -251,15 +251,15 @@ def add_data(request, cv_number, forms_number):
                     university=university
                 ))
                 user_data.save()
-                return render(request, 'home/add_data.html', {'form': EducationForm(), 'isValid': True,
+                return render(request, 'home/forms/add_data.html', {'form': EducationForm(), 'isValid': True,
                                                               'name': "education", 'forms_number': forms_number,
                                                               'cv_number': cv_number})
             else:
-                return render(request, 'home/add_data.html', {'form': EducationForm(), 'isValid': False,
+                return render(request, 'home/forms/add_data.html', {'form': EducationForm(), 'isValid': False,
                                                               'name': "education", 'forms_number': forms_number,
                                                               'cv_number': cv_number})
         else:
-            return render(request, 'home/add_data.html', {'form': EducationForm(), 'isValid': False,
+            return render(request, 'home/forms/add_data.html', {'form': EducationForm(), 'isValid': False,
                                                           'name': "education", 'forms_number': forms_number,
                                                           'cv_number': cv_number})
     elif forms_number == 7:
@@ -276,15 +276,15 @@ def add_data(request, cv_number, forms_number):
                     )
                 )
                 university.save()
-                return render(request, 'home/add_data.html', {'form': UniversityForm(), 'isValid': True,
+                return render(request, 'home/forms/add_data.html', {'form': UniversityForm(), 'isValid': True,
                                                               'name': "university", 'forms_number': forms_number,
                                                               'cv_number': cv_number})
             else:
-                return render(request, 'home/add_data.html', {'form': UniversityForm(), 'isValid': False,
+                return render(request, 'home/forms/add_data.html', {'form': UniversityForm(), 'isValid': False,
                                                               'name': "university", 'forms_number': forms_number,
                                                               'cv_number': cv_number})
         else:
-            return render(request, 'home/add_data.html', {'form': UniversityForm(), 'isValid': False,
+            return render(request, 'home/forms/add_data.html', {'form': UniversityForm(), 'isValid': False,
                                                           'name': "university", 'forms_number': forms_number,
                                                           'cv_number': cv_number})
 
