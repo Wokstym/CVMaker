@@ -10,120 +10,132 @@
 
 <div  class="col-lg-12  my-4">
 
-    <div class="card"  style="background-color: rgba(84,83,83,0.89); color: white; box-shadow: 10px 6px 18px -4px rgba(0,0,0,0.8)">
+    <div class="card"  style="box-shadow: 10px 6px 18px -4px rgba(0,0,0,0.8)">
 
-<div class="container-fluid" style="background-image: url(../../static/img/home/prism.png); font-size: 22px">
+
+<div class="container-fluid">
     <div class="row">
-        <div class="col-12 text-center mt-5" style="font-size: 40px">{{ name }} {{ surname }}</div>
-        <div class="col-12 text-center mb-4">{{ description }}</div>
+        <div class="col-4 px-1 py-5 mr-5" style="font-size: 16px">
 
+            <div class="mt-3 mb-2 text-center px-2" style="font-size: 40px">
+                <p class="mb-0">{{ name }}</p>
+                <p class="mt-0">{{ surname }}</p>
+                <p style="font-size: 16px">{{ description }}</p>
+            </div>
+        <hr  class="mt-0 mb-4 mx-4"style="height:1px; background-color: whitesmoke">
+            {% if contact_info is not None %}
+                <div class="ml-5">
+                    <h4 class="mt-1 mb-3" style="color: rgba(230,169,11,0.93)"><i class="icon-user">  </i>CONTACT</h4>
+                    <i class="icon-home"></i>
+                    <p class="mt-1 mb-1">{{ contact_info.country }}/{{ contact_info.city }}</p>
+                    {% if contact_info.phone != "" %}
+                        <i class="icon-phone"></i>
+                        <p class="mt-0 mb-1">{{ contact_info.phone }}</p>
+                    {% endif %}
+                    {% if contact_info.email != "" %}
+                        <i class="icon-envelope-alt"></i>
+                        <p class="mt-0 mb-1">{{ contact_info.email }}</p>
+                    {% endif %}
+                    {% if  contact_info.github != "" %}
+                        <i class="icon-github"></i>
+                        <p class="mt-0 mb-1">{{ contact_info.github }}</p>
+                    {% endif %}
+                    {% if contact_info.linkedin != "" %}
+                        <i class="icon-linkedin"></i>
+                        <p class="mt-0 mb-1">{{ contact_info.linkedin }}</p>
+                    {% endif %}
+                    {% if contact_info.personal_website != "" %}
+                        <i class="icon-cloud"></i>
+                        <p class="mt-0 mb-1">{{ contact_info.personal_website }}</p>
+                    {% endif %}
+                 </div>
+            {% endif %}
+
+            {% if skills %}
+                <div class="ml-5">
+                    <h4 class="my-4"style="color: rgba(230,169,11,0.93)"><i class="icon-trophy">  </i>SKILLS</h4>
+                    {% for skill in skills %}
+                        <p class="my-0" style="font-size: 18px">{{ skill.name }}</p>
+                    {% endfor %}
+                </div>
+            {% endif %}
+
+            {% if languages %}
+                <div class="ml-5">
+                    <h4 class="my-4"style="color: rgba(230,169,11,0.93)"><i class="icon-flag">  </i>LANGUAGES</h4>
+                    {% for language in languages %}
+                        <p class="my-0" style="font-size: 20px">{{ language.name }}</p>
+                        <p class="my-0" style="font-size: 16px">{{ language.description }}</p>
+                    {% endfor %}
+                </div>
+            {% endif %}
+
+            {% if interests %}
+                <div class="ml-5">
+                    <h4 class="mt-4" style="color: rgba(230,169,11,0.93)"><i class="icon-coffee">  </i>INTERESTS</h4>
+                    {% for interest in interests %}
+                        <p class="my-0" style="font-size: 18px">{{ interest.name }}</p>
+                    {% endfor %}
+                </div>
+            {% endif %}
+        </div>
+
+        <div class="col-7 py-5 ml-2 pl-3 mt-3">
+            {% if experience %}
+                <div>
+                <h4 class="my-3 p-2"style="color: rgba(230,169,11,0.93)"><i class="icon-briefcase">  </i>EMPLOYMENT HISTORY</h4>
+                <hr  class="mt-0 mb-4"style="height:1px; background-color: #2b2b2b">
+                {% for job in experience %}
+                    <p class="my-0" style="font-size: 22px; font-weight: bold">{{ job.start }} - {{ job.end }}</p>
+                    <p class="my-0" style="font-size: 18px">{{ job.position }} in {{ job.company }}</p>
+                    <p class="mt-0 mb-3" style="font-size: 16px">{{ job.description }}</p>
+                {% endfor %}
+                </div>
+            {% endif %}
+
+
+
+            {% if education %}
+                <div>
+                    <h4 class="my-4 p-2"style="color: rgba(230,169,11,0.93)"><i class="icon-book">  </i>ACADEMIC BACKGROUND</h4>
+                    <hr  class="mt-0 mb-4"style="height:1px; background-color: #2b2b2b">
+                    {% for school in education %}
+                        <p class="my-0" style="font-size: 22px; font-weight: bold">{{ school.start }} - {{ school.end }}</p>
+                        <p class="my-0" style="font-size: 18px">{{ school.degree }} in {{ school.field_of_study }}</p>
+                        <p class="my-0 mb-3" style="font-size: 16px">{{ school.university.name }}, {{ school.faculty }}, {{ school.university.address.street }} {{ school.university.address.street_number }} {{ school.university.address.city }} {{ school.university.address.zip }}</p>
+                    {% endfor %}
+                </div>
+            {% endif %}
+
+
+            {% if organizations %}
+                <div>
+                    <h4 class="my-4 p-2" style="color: rgba(230,169,11,0.93)"><i class="icon-globe">  </i>ORGANIZATIONS</h4>
+                    <hr  class="mt-0 mb-4"style="height:1px; background-color: #2b2b2b">
+                    {% for organization in organizations %}
+                        <p class="mt-0 mb-3" style="font-size: 22px; font-weight: bold">{{ organization.name }}</p>
+                        <p class="mt-0 mb-3" style="font-size: 16px">{{ organization.description }}</p>
+                    {% endfor %}
+                </div>
+            {% endif %}
+
+
+            {% if projects %}
+                <div>
+                    <h4 class="mt-4 p-2" style="color: rgba(230,169,11,0.93)"><i class="icon-cogs">  </i>PROJECTS</h4>
+                    <hr  class="mt-0 mb-4"style="height:1px; background-color: #2b2b2b">
+                    {% for project in projects %}
+                        <p class="mt-0 mb-3" style="font-size: 22px; font-weight: bold">{{ project.name }}</p>
+                        <p class="mt-0 mb-3" style="font-size: 16px">{{ project.description }}</p>
+                    {% endfor %}
+                </div>
+            {% endif %}
+        </div>
     </div>
+
 </div>
 
-<div class="container-fluid mt-5 mx-3">
-    <div class="row mb-5 mx-auto">
-    {% if contact_info is not None %}
-        <div class="col-5 ml-5" style="font-size: 16px">
-                <h4 class="my-3"style="color: rgba(230,169,11,0.93)">CONTACT</h4>
-                <p class="my-0">{{ contact_info.country }}/{{ contact_info.city }}</p>
-                {% if contact_info.phone != "" %}
-                    <p class="my-0"><i class="icon-phone">  </i>{{ contact_info.phone }}</p>
-                {% endif %}
-                {% if contact_info.email != "" %}
-                    <p class="my-0"><i class="icon-envelope-alt">  </i>{{ contact_info.email }}</p>
-                {% endif %}
-                {% if  contact_info.github != "" %}
-                    <p class="my-0"><i class="icon-github">  </i>{{ contact_info.github }}</p>
-                {% endif %}
-                {% if contact_info.linkedin != "" %}
-                    <p class="my-0"><i class="icon-linkedin">  </i>{{ contact_info.linkedin }}</p>
-                {% endif %}
-                {% if contact_info.personal_website != "" %}
-                    <p class="my-0"><i class="icon-cloud">  </i>{{ contact_info.personal_website }}</p>
-                {% endif %}
-        </div>
-    {% endif %}
 
-    {% if experience %}
-{#        <div style="border-left:1px solid black; width: 0"></div>#}
-        <div class="col-5 ml-5">
-            <h4 class="my-3"style="color: rgba(230,169,11,0.93)">EMPLOYMENT HISTORY</h4>
-            {% for job in experience %}
-                <p class="my-0" style="font-size: 18px"><i class="icon-chevron-right">  </i>{{ job.start }} - {{ job.end }}</p>
-                <p class="my-0">{{ job.position }} in {{ job.company }}</p>
-                <p class="mt-0 mb-3">{{ job.description }}</p>
-            {% endfor %}
-        </div>
-    {% endif %}
-
-    {% if skills %}
-        <div class="col-5 ml-5" style="font-size: 16px">
-            <h4 class="my-3"style="color: rgba(230,169,11,0.93)">SKILLS</h4>
-            {% for skill in skills %}
-                <p class="my-0">{{ skill.name }}</p>
-            {% endfor %}
-        </div>
-    {% endif %}
-
-
-    {% if education %}
-{#        <div style="border-left:1px solid black; width: 0"></div>#}
-        <div class="col-5 ml-5">
-            <h4 class="my-3"style="color: rgba(230,169,11,0.93)">ACADEMIC BACKGROUND</h4>
-            {% for school in education %}
-                <p class="my-0" style="font-size: 18px"><i class="icon-chevron-right">  </i>{{ school.start }} - {{ school.end }}</p>
-                <p class="my-0" style="font-size: 18px">{{ school.degree }} in {{ school.field_of_study }}</p>
-                <p class="my-0 mb-3">{{ school.university.name }}, {{ school.faculty }}, {{ school.university.address.street }} {{ school.university.address.street_number }} {{ school.university.address.city }} {{ school.university.address.zip }}</p>
-            {% endfor %}
-        </div>
-    {% endif %}
-
-    {% if languages %}
-        <div class="col-5 ml-5" style="font-size: 16px">
-            <h4 class="my-3"style="color: rgba(230,169,11,0.93)">LANGUAGES</h4>
-            {% for language in languages %}
-                <p class="my-0">{{ language.name }} - {{ language.description }}</p>
-            {% endfor %}
-        </div>
-    {% endif %}
-
-    {% if organizations %}
-{#        <div style="border-left:1px solid black; width: 0"></div>#}
-        <div class="col-5 my-2 ml-5">
-            <h4 class="my-3"style="color: rgba(230,169,11,0.93)">ORGANIZATIONS</h4>
-            {% for organization in organizations %}
-                <p class="mt-0 mb-3">{{ organization.name }} - {{ organization.description }}</p>
-            {% endfor %}
-        </div>
-    {% endif %}
-
-    {% if interests %}
-        <div class="col-5 ml-5" style="font-size: 16px">
-            <h4 class="my-3" style="color: rgba(230,169,11,0.93)">INTERESTS</h4>
-            {% for interest in interests %}
-                <p class="my-0">{{ interest.name }}</p>
-            {% endfor %}
-        </div>
-    {% endif %}
-
-    {% if projects %}
-{#        <div style="border-left:1px solid black; width: 0"></div>#}
-        <div class="col-5 my-2 ml-5">
-            <h4 class="my-3" style="color: rgba(230,169,11,0.93)">PROJECTS</h4>
-            {% for project in projects %}
-                <p class="mt-0 mb-3">{{ project.name }} - {{ project.description }}</p>
-            {% endfor %}
-        </div>
-    {% endif %}
-    </div>
-
-</div>
-
-<div class="container-fluid" style="background-image: url(../../static/img/home/prism.png); font-size: 14px">
-    <div class="row text-center">
-        <div class="col-lg-8 col-lg-offset-2 text-center mx-auto my-4">Wyrażam zgodę na przetwarzanie moich danych osobowych dla potrzeb niezbędnych do realizacji procesu rekrutacji zgodnie z Rozporządzeniem Parlamentu Europejskiego i Rady (UE) 2016/679 z dnia 27 kwietnia 2016 r. w sprawie ochrony osób fizycznych w związku z przetwarzaniem danych osobowych i w sprawie swobodnego przepływu takich danych oraz uchylenia dyrektywy 95/46/WE (RODO).</div>
-    </div>
-</div>
 
 
     </div>

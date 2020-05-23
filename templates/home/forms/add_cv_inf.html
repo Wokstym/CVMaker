@@ -2,10 +2,6 @@
 
 {% load static %}
 
-{% block stylesheet %}
-<link rel="stylesheet" href="{% static 'css/home/add_cv_inf.css' %}">
-{% endblock %}
-
 {% block title %}Add CV{% endblock %}
 {% block content %}
     <div class="container my-5 col-12">
@@ -28,25 +24,25 @@
                         <h3 class="card-title text-center mb-4" style="color: black">Add additional information to CV</h3>
                         <div class="row text-center">
                             <div class="col-12">
-                                <a href="{% url 'add_data' cv_number=cv_number forms_number=0%}">Experience</a>
+                                <a class="link" href="{% url 'add_data' cv_number=cv_number forms_number=0%}" style="margin: 5px ;display: inline-block; text-decoration: none; border-radius: 6px;border-style: solid; border-color: grey; padding: 2px; color: black">Experience</a>
                             </div>
                             <div class="col-12">
-                                <a href="{% url 'add_data' cv_number=cv_number forms_number=1%}">Skills</a>
+                                <a href="{% url 'add_data' cv_number=cv_number forms_number=1%}" style="margin: 5px ;display: inline-block; text-decoration: none; border-radius: 6px;border-style: solid; border-color: grey; padding: 2px; color: black">Skills</a>
                             </div>
                             <div class="col-12">
-                                <a href="{% url 'add_data' cv_number=cv_number forms_number=2%}">Languages</a>
+                                <a href="{% url 'add_data' cv_number=cv_number forms_number=2%}" style="margin: 5px ;display: inline-block; text-decoration: none; border-radius: 6px;border-style: solid; border-color: grey; padding: 2px; color: black">Languages</a>
                             </div>
                             <div class="col-12">
-                                <a href="{% url 'add_data' cv_number=cv_number forms_number=3%}">Interests</a>
+                                <a href="{% url 'add_data' cv_number=cv_number forms_number=3%}" style="margin: 5px ;display: inline-block; text-decoration: none; border-radius: 6px;border-style: solid; border-color: grey; padding: 2px; color: black">Interests</a>
                             </div>
                             <div class="col-12">
-                                <a href="{% url 'add_data' cv_number=cv_number forms_number=4%}">Projects</a>
+                                <a href="{% url 'add_data' cv_number=cv_number forms_number=4%}" style="margin: 5px ;display: inline-block; text-decoration: none; border-radius: 6px;border-style: solid; border-color: grey; padding: 2px; color: black">Projects</a>
                             </div>
                             <div class="col-12">
-                                <a href="{% url 'add_data' cv_number=cv_number forms_number=5%}">Organizations</a>
+                                <a href="{% url 'add_data' cv_number=cv_number forms_number=5%}" style="margin: 5px ;display: inline-block; text-decoration: none; border-radius: 6px;border-style: solid; border-color: grey; padding: 2px; color: black">Organizations</a>
                             </div>
                             <div class="col-12">
-                                <a href="{% url 'add_data' cv_number=cv_number forms_number=6%}">Education</a>
+                                <a href="{% url 'add_data' cv_number=cv_number forms_number=6%}" style="margin: 5px ;display: inline-block; text-decoration: none; border-radius: 6px;border-style: solid; border-color: grey; padding: 2px; color: black">Education</a>
                             </div>
                         </div>
                     </div>
