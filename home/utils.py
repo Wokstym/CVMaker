@@ -38,7 +38,10 @@ def generate_pdf(template_path, context, pdf_title):
         'static/css/to_pdf/ldbtn.min.css',
         'static/css/to_pdf/fontawesome.min.css']
 
-    pdf = pdfkit.from_string(html, False, options, css=css)
+    path_wkhtmltopdf = r'C:\Program Files\wkhtmltopdf\bin\wkhtmltopdf.exe'
+    config = pdfkit.configuration(wkhtmltopdf=path_wkhtmltopdf)
+
+    pdf = pdfkit.from_string(html, False, options, css=css, configuration=config)
     response = HttpResponse(pdf, content_type='application/pdf')
     content = f"inline; filename={urlquote(pdf_title + '.pdf')}"
     response['Content-Disposition'] = content

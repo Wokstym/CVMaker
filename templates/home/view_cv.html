@@ -25,8 +25,8 @@
         <hr  class="mt-0 mb-4 mx-4"style="height:1px; background-color: whitesmoke">
             {% if contact_info is not None %}
                 <div class="ml-5">
-                    <h4 class="mt-1 mb-3" style="color: rgba(230,169,11,0.93)"><i class="icon-user">  </i>CONTACT</h4>
-                    <i class="icon-home"></i>
+                    <h4 class="mt-1 mb-3" style="color: rgba(230,169,11,0.93)"><i class="icon-home"></i>  </i>CONTACT</h4>
+                    <i class="icon-map-marker"></i>
                     <p class="mt-1 mb-1">{{ contact_info.country }}/{{ contact_info.city }}</p>
                     {% if contact_info.phone != "" %}
                         <i class="icon-phone"></i>
@@ -81,6 +81,14 @@
         </div>
 
         <div class="col-7 py-5 ml-2 pl-3 mt-3">
+            {% if quotation %}
+                <div>
+                <h4 class="my-3 p-2"style="color: rgba(230,169,11,0.93)"><i class="icon-user">  </i>PERSONAL PROFILE</h4>
+                <hr  class="mt-0 mb-4"style="height:1px; background-color: #2b2b2b">
+                    <p class="mt-0 mb-3" style="font-size: 16px">{{ quotation }}</p>
+                </div>
+            {% endif %}
+
             {% if experience %}
                 <div>
                 <h4 class="my-3 p-2"style="color: rgba(230,169,11,0.93)"><i class="icon-briefcase">  </i>EMPLOYMENT HISTORY</h4>
