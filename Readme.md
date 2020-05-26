@@ -18,7 +18,38 @@ Make sure on windows wkhtmltopdf is in PATH, you can check that by typing in ter
 ```bash
 wkhtmltopdf --version
 ```
+## Description
 
+To connect your MongoDB Atlas cluster you need to create file in CVMaker folder, where there is a settings.py file
+ 
+ #### **`CVMaker/config.py`**
+ ```python
+DB_CONNECTION = 'your connection string'
+DB_NAME = 'name od database user'
+DB_PASSWORD = 'password string'
+```
+
+To get create database connection data follow a tutorial [here](https://docs.atlas.mongodb.com/connect-to-cluster/)
+
+## Structure
+
+Database models can be found at
+[models.py](./home/models.py)
+
+Forms for creating and saving to database objects 
+[forms.py](./accounts/forms.py)
+
+[Settings](./CVMaker/settings.py)
+
+File where are declared urls which can be accessed on website
+[urls.py](./CVMaker/urls.py)
+
+Views, where single pages are rendered and pdf generation logic is used
+[accounts views.py](./accounts/views.py),
+[home views.py](./home/views.py)
+
+Html files 
+[templates](./templates)
 
 
 ## Roadmap
