@@ -2,10 +2,8 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-<!--    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"-->
-<!--          integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">-->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-<!--  w zaleznosci ktora wersje zaimportuje bootstrapa to inaczej sie zachowuje xD testuj sobie   -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+          integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <link href="https://netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css" rel="stylesheet">
     <link
             rel="stylesheet" type="text/css"
@@ -24,129 +22,130 @@
                 <p class="mt-0">{{ surname }}</p>
                 <p style="font-size: 16px">{{ description }}</p>
             </div>
-        <hr  class="mt-0 mb-4 mx-4"style="height:1px; background-color: whitesmoke">
+            <hr class="mt-0 mb-4 mx-4" style="height:1px; background-color: whitesmoke">
             {% if contact_info is not None %}
-                <div class="ml-5">
-                    <h4 class="mt-1 mb-3" style="color: rgba(230,169,11,0.93)"><i class="icon-home">  </i>CONTACT</h4>
-                    <i class="icon-map-marker"></i>
-                    <p class="mt-1 mb-1">{{ contact_info.country }}/{{ contact_info.city }}</p>
-                    {% if contact_info.phone != "" %}
-                        <i class="icon-phone"></i>
-                        <p class="mt-0 mb-1">{{ contact_info.phone }}</p>
-                    {% endif %}
-                    {% if contact_info.email != "" %}
-                        <i class="icon-envelope-alt"></i>
-                        <p class="mt-0 mb-1">{{ contact_info.email }}</p>
-                    {% endif %}
-                    {% if  contact_info.github != "" %}
-                        <i class="icon-github"></i>
-                        <p class="mt-0 mb-1">{{ contact_info.github }}</p>
-                    {% endif %}
-                    {% if contact_info.linkedin != "" %}
-                        <i class="icon-linkedin"></i>
-                        <p class="mt-0 mb-1">{{ contact_info.linkedin }}</p>
-                    {% endif %}
-                    {% if contact_info.personal_website != "" %}
-                        <i class="icon-cloud"></i>
-                        <p class="mt-0 mb-1">{{ contact_info.personal_website }}</p>
-                    {% endif %}
-                 </div>
+            <div class="ml-5">
+                <h4 class="mt-1 mb-3" style="color: rgba(230,169,11,0.93)"><i class="icon-home"> </i>CONTACT</h4>
+                <i class="icon-map-marker"></i>
+                <p class="mt-1 mb-1">{{ contact_info.country }}/{{ contact_info.city }}</p>
+                {% if contact_info.phone != "" %}
+                <i class="icon-phone"></i>
+                <p class="mt-0 mb-1">{{ contact_info.phone }}</p>
+                {% endif %}
+                {% if contact_info.email != "" %}
+                <i class="icon-envelope-alt"></i>
+                <p class="mt-0 mb-1">{{ contact_info.email }}</p>
+                {% endif %}
+                {% if contact_info.github != "" %}
+                <i class="icon-github"></i>
+                <p class="mt-0 mb-1">{{ contact_info.github }}</p>
+                {% endif %}
+                {% if contact_info.linkedin != "" %}
+                <i class="icon-linkedin"></i>
+                <p class="mt-0 mb-1">{{ contact_info.linkedin }}</p>
+                {% endif %}
+                {% if contact_info.personal_website != "" %}
+                <i class="icon-cloud"></i>
+                <p class="mt-0 mb-1">{{ contact_info.personal_website }}</p>
+                {% endif %}
+            </div>
             {% endif %}
 
             {% if skills %}
-                <div class="ml-5">
-                    <h4 class="my-4"style="color: rgba(230,169,11,0.93)"><i class="icon-trophy">  </i>SKILLS</h4>
-                    {% for skill in skills %}
-                        <p class="my-0" style="font-size: 18px">{{ skill.name }}</p>
-                    {% endfor %}
-                </div>
+            <div class="ml-5">
+                <h4 class="my-4" style="color: rgba(230,169,11,0.93)"><i class="icon-trophy"> </i>SKILLS</h4>
+                {% for skill in skills %}
+                <p class="my-0" style="font-size: 18px">{{ skill.name }}</p>
+                {% endfor %}
+            </div>
             {% endif %}
 
             {% if languages %}
-                <div class="ml-5">
-                    <h4 class="my-4"style="color: rgba(230,169,11,0.93)"><i class="icon-flag">  </i>LANGUAGES</h4>
-                    {% for language in languages %}
-                        <p class="my-0" style="font-size: 20px">{{ language.name }}</p>
-                        <p class="my-0" style="font-size: 16px">{{ language.description }}</p>
-                    {% endfor %}
-                </div>
+            <div class="ml-5">
+                <h4 class="my-4" style="color: rgba(230,169,11,0.93)"><i class="icon-flag"> </i>LANGUAGES</h4>
+                {% for language in languages %}
+                <p class="my-0" style="font-size: 20px">{{ language.name }}</p>
+                <p class="my-0" style="font-size: 16px">{{ language.description }}</p>
+                {% endfor %}
+            </div>
             {% endif %}
 
             {% if interests %}
-                <div class="ml-5">
-                    <h4 class="mt-4" style="color: rgba(230,169,11,0.93)"><i class="icon-coffee">  </i>INTERESTS</h4>
-                    {% for interest in interests %}
-                        <p class="my-0" style="font-size: 18px">{{ interest.name }}</p>
-                    {% endfor %}
-                </div>
+            <div class="ml-5">
+                <h4 class="mt-4" style="color: rgba(230,169,11,0.93)"><i class="icon-coffee"> </i>INTERESTS</h4>
+                {% for interest in interests %}
+                <p class="my-0" style="font-size: 18px">{{ interest.name }}</p>
+                {% endfor %}
+            </div>
             {% endif %}
         </div>
 
         <div class="col-7 py-5 ml-2 pl-3 mt-3">
             {% if quotation %}
-                <div>
-                <h4 class="my-3 p-2"style="color: rgba(230,169,11,0.93)"><i class="icon-user">  </i>PERSONAL PROFILE</h4>
-                <hr  class="mt-0 mb-4"style="height:1px; background-color: #2b2b2b">
-                    <p class="mt-0 mb-3" style="font-size: 16px">{{ quotation }}</p>
-                </div>
+            <div>
+                <h4 class="my-3 p-2" style="color: rgba(230,169,11,0.93)"><i class="icon-user"> </i>PERSONAL PROFILE
+                </h4>
+                <hr class="mt-0 mb-4" style="height:1px; background-color: #2b2b2b">
+                <p class="mt-0 mb-3" style="font-size: 16px">{{ quotation }}</p>
+            </div>
             {% endif %}
 
             {% if experience %}
-                <div>
-                <h4 class="my-3 p-2"style="color: rgba(230,169,11,0.93)"><i class="icon-briefcase">  </i>EMPLOYMENT HISTORY</h4>
-                <hr  class="mt-0 mb-4"style="height:1px; background-color: #2b2b2b">
+            <div>
+                <h4 class="my-3 p-2" style="color: rgba(230,169,11,0.93)"><i class="icon-briefcase"> </i>EMPLOYMENT
+                    HISTORY</h4>
+                <hr class="mt-0 mb-4" style="height:1px; background-color: #2b2b2b">
                 {% for job in experience %}
-                    <p class="my-0" style="font-size: 22px; font-weight: bold">{{ job.start }} - {{ job.end }}</p>
-                    <p class="my-0" style="font-size: 18px">{{ job.position }} in {{ job.company }}</p>
-                    <p class="mt-0 mb-3" style="font-size: 16px">{{ job.description }}</p>
+                <p class="my-0" style="font-size: 22px; font-weight: bold">{{ job.start }} - {{ job.end }}</p>
+                <p class="my-0" style="font-size: 18px">{{ job.position }} in {{ job.company }}</p>
+                <p class="mt-0 mb-3" style="font-size: 16px">{{ job.description }}</p>
                 {% endfor %}
-                </div>
+            </div>
             {% endif %}
 
 
-
             {% if education %}
-                <div>
-                    <h4 class="my-4 p-2"style="color: rgba(230,169,11,0.93)"><i class="icon-book">  </i>ACADEMIC BACKGROUND</h4>
-                    <hr  class="mt-0 mb-4"style="height:1px; background-color: #2b2b2b">
-                    {% for school in education %}
-                        <p class="my-0" style="font-size: 22px; font-weight: bold">{{ school.start }} - {{ school.end }}</p>
-                        <p class="my-0" style="font-size: 18px">{{ school.degree }} in {{ school.field_of_study }}</p>
-                        <p class="my-0 mb-3" style="font-size: 16px">{{ school.university.name }}, {{ school.faculty }}, {{ school.university.address.street }} {{ school.university.address.street_number }} {{ school.university.address.city }} {{ school.university.address.zip }}</p>
-                    {% endfor %}
-                </div>
+            <div>
+                <h4 class="my-4 p-2" style="color: rgba(230,169,11,0.93)"><i class="icon-book"> </i>ACADEMIC BACKGROUND
+                </h4>
+                <hr class="mt-0 mb-4" style="height:1px; background-color: #2b2b2b">
+                {% for school in education %}
+                <p class="my-0" style="font-size: 22px; font-weight: bold">{{ school.start }} - {{ school.end }}</p>
+                <p class="my-0" style="font-size: 18px">{{ school.degree }} in {{ school.field_of_study }}</p>
+                <p class="my-0 mb-3" style="font-size: 16px">{{school.university.name}}, {{school.faculty}},
+                    {{school.university.address.street}} {{school.university.address.street_number}}
+                    {{school.university.address.city}} {{school.university.address.zip}}</p>
+                {% endfor %}
+            </div>
             {% endif %}
 
 
             {% if organizations %}
-                <div>
-                    <h4 class="my-4 p-2" style="color: rgba(230,169,11,0.93)"><i class="icon-globe">  </i>ORGANIZATIONS</h4>
-                    <hr  class="mt-0 mb-4"style="height:1px; background-color: #2b2b2b">
-                    {% for organization in organizations %}
-                        <p class="mt-0 mb-3" style="font-size: 22px; font-weight: bold">{{ organization.name }}</p>
-                        <p class="mt-0 mb-3" style="font-size: 16px">{{ organization.description }}</p>
-                    {% endfor %}
-                </div>
+            <div>
+                <h4 class="my-4 p-2" style="color: rgba(230,169,11,0.93)"><i class="icon-globe"> </i>ORGANIZATIONS</h4>
+                <hr class="mt-0 mb-4" style="height:1px; background-color: #2b2b2b">
+                {% for organization in organizations %}
+                <p class="mt-0 mb-3" style="font-size: 22px; font-weight: bold">{{ organization.name }}</p>
+                <p class="mt-0 mb-3" style="font-size: 16px">{{ organization.description }}</p>
+                {% endfor %}
+            </div>
             {% endif %}
 
 
             {% if projects %}
-                <div>
-                    <h4 class="mt-4 p-2" style="color: rgba(230,169,11,0.93)"><i class="icon-cogs">  </i>PROJECTS</h4>
-                    <hr  class="mt-0 mb-4"style="height:1px; background-color: #2b2b2b">
-                    {% for project in projects %}
-                        <p class="mt-0 mb-3" style="font-size: 22px; font-weight: bold">{{ project.name }}</p>
-                        <p class="mt-0 mb-3" style="font-size: 16px">{{ project.description }}</p>
-                    {% endfor %}
-                </div>
+            <div>
+                <h4 class="mt-4 p-2" style="color: rgba(230,169,11,0.93)"><i class="icon-cogs"> </i>PROJECTS</h4>
+                <hr class="mt-0 mb-4" style="height:1px; background-color: #2b2b2b">
+                {% for project in projects %}
+                <p class="mt-0 mb-3" style="font-size: 22px; font-weight: bold">{{ project.name }}</p>
+                <p class="mt-0 mb-3" style="font-size: 16px">{{ project.description }}</p>
+                {% endfor %}
+            </div>
             {% endif %}
         </div>
     </div>
 
 </div>
-
-
-
 
 
 <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"

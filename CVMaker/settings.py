@@ -11,7 +11,7 @@ https://docs.djangoproject.com/en/2.2/ref/settings/
 """
 
 import os
-from CVMaker.config import DB_PASSWORD
+from CVMaker.config import DB_PASSWORD, DB_CONNECTION, DB_NAME
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -74,14 +74,13 @@ WSGI_APPLICATION = 'CVMaker.wsgi.application'
 
 # Database
 # https://docs.djangoproject.com/en/2.2/ref/settings/#databases
-# "mongodb+srv://app:"+password+"@cvmakerdb-l6yyx.mongodb.net/test?retryWrites=true&w=majority";
 DATABASES = {
     'default': {
         'ENGINE': 'djongo',
         'ENFORCE_SCHEMA': False,
         'CLIENT': {
-            'host': 'mongodb+srv://cvmaker:fake@cvmakerdb-l6yyx.mongodb.net/test?retryWrites=true&w=majority',
-            'username': 'cvmaker',
+            'host': DB_CONNECTION,
+            'username': DB_NAME,
             'password': DB_PASSWORD,
             'authMechanism': 'SCRAM-SHA-1'
         },
