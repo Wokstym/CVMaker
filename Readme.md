@@ -56,6 +56,31 @@ Auxiliary functions
 Html files 
 [templates](./templates)
 
+## Database
+
+Each user in the database has a collection of data named *UserData*.
+
+UserData contains fields like:
+* name
+* surname
+* several CVs called *current_cvs*
+
+Every CV contains:
+* contact_info (basic information about you like city, country, phone, email, etc.)
+* education (schools, universities which you have attended)
+* experience (work experience)
+* skills
+* languages
+* interests
+* projects (projects which you have participated in)
+* organizations (organizations you are or have been a member of)
+* description (short description about who you are, for example "Computer Science Student")
+* name (name of CV for your own knowledge)
+* quotation (quotation that describe you)
+
+There is also a collection called *Universities* in the database.
+Every university has a name and address which include city, street, street number and zip code.
+When you add education to your CV, you can use the universities in this collection or add your own if it is not in this collection.
 
 ## Roadmap
 
