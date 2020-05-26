@@ -2,6 +2,8 @@
 
 Database for building CV
 
+This application allows you to create an account in which you can add data to several CVs and then generate a pdf with the selected template.
+
 Technologies stack:
 
 - Database: MongoDB Atlas
@@ -47,6 +49,9 @@ File where are declared urls which can be accessed on website
 Views, where single pages are rendered and pdf generation logic is used
 [accounts views.py](./accounts/views.py),
 [home views.py](./home/views.py)
+
+Auxiliary functions
+[utils.py](./home/utils.py)
 
 Html files 
 [templates](./templates)
